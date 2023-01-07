@@ -17,6 +17,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import javax.servlet.http.HttpServletResponse;
 
+
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
