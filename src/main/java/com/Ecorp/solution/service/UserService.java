@@ -1,6 +1,7 @@
 package com.Ecorp.solution.service;
 
 import com.Ecorp.solution.model.UserRole;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import com.Ecorp.solution.DAO.UserDAO;
 import com.Ecorp.solution.model.User;
@@ -102,5 +103,17 @@ public class UserService implements UserDetailsService {
         userDAO.updatePassword(user.getId(),user);
 
         return jwtUtil.generateToken(user.getEmail(), user.getRole(), user.getName(), user.getId());
+    }
+
+    public void deleteUser(Long id) {
+        userDAO.deleteUser(id);
+    }
+
+    public void updateRole(UserRole role, Long id) {
+        userDAO.updateRole(role, id);
+    }
+
+    public List<User> getAllUsers() {
+        return userDAO.getAllUsers();
     }
 }

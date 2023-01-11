@@ -1,22 +1,24 @@
 package com.Ecorp.solution.controller;
 
-
 import com.Ecorp.solution.model.JWTPayload;
 import com.Ecorp.solution.model.User;
 import com.Ecorp.solution.record.ChangePassword;
 import com.Ecorp.solution.record.LoginRequest;
 import com.Ecorp.solution.record.RegisterRequest;
+import com.Ecorp.solution.record.UpdateRole;
 import com.Ecorp.solution.service.UserService;
+
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/auth")
 public class UserController {
-
     private static final String SERVER_GOT_ERROR = "Er is iets fout gegaan op de server, probeer het later opnieuw";
     private static final String NEW_USER_MADE = "Nieuwe gebruiker aangemaakt";
     private static final String USER_ALREADY_EXISTS = "gebuiker bestaat al";
@@ -66,5 +68,23 @@ public class UserController {
         Optional<User> user = userService.getUserById(id);
         if (user.isPresent()) return user.get().getName();
         return "";
+    }
+
+    @GetMapping("/users")
+    @ResponseBody
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
+    @DeleteMapping("/delete/{id}")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+    }
+
+    @PutMapping("/updateRole")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public void deleteUser(@RequestBody UpdateRole r) {
+        userService.updateRole(r.role(), r.id());
     }
 }
