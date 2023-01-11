@@ -21,19 +21,19 @@ public class ServerController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    @CrossOrigin(origins = "http://localhost:59539")
+    @CrossOrigin(origins = "http://localhost:80")
     public void deleteServer(@PathVariable Long id) {
         serverService.deleteServer(id);
     }
 
     @PutMapping(value = "/update")
-    @CrossOrigin(origins = "http://localhost:59539")
+    @CrossOrigin(origins = "http://localhost:80")
     public Server updateServer(@RequestBody Server server) {
         return serverService.updateServer(server);
     }
 
     @PostMapping(value = "/new")
-    @CrossOrigin(origins = "http://localhost:59539")
+    @CrossOrigin(origins = "http://localhost:80")
     public Server newServer(@RequestBody Server server) {
         return serverService.newServer(server);
     }
