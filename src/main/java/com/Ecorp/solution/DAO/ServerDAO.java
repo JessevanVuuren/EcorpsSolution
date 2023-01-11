@@ -24,4 +24,26 @@ public class ServerDAO {
         return serverRepository.findAll();
     }
 
+    public Server newServer(Server server) {
+        return serverRepository.save(server);
+    }
+
+    public Server updateServer(Server server) {
+        serverRepository.updateServer(
+                server.getCpu(),
+                server.getName(),
+                server.getPrice(),
+                server.getRam(),
+                server.getSpace(),
+                server.getStype(),
+                server.getId()
+                );
+        Optional<Server> s = getServerById(server.getId());
+        return s.orElse(null);
+
+    }
+
+    public void deleteServer(Long id) {
+        serverRepository.deleteById(id);
+    }
 }

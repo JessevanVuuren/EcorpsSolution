@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -14,5 +15,17 @@ public class ServerService {
 
     public List<Server> getAllServers() {
         return serverDAO.getAllServers();
+    }
+
+    public Server newServer(Server server) {
+        return serverDAO.newServer(server);
+    }
+
+    public Server updateServer(Server server) {
+        return serverDAO.updateServer(server);
+    }
+
+    public void deleteServer(Long id) {
+        serverDAO.deleteServer(id);
     }
 }
