@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/api/promocode")
 public class PromoCodeController {
@@ -32,22 +32,16 @@ public class PromoCodeController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    @CrossOrigin(origins = "http://174.138.8.53:80")
-//    @CrossOrigin(origins = "http://localhost:4200")
     public void deleteServer(@PathVariable Long id) {
         promocodeService.delete(id);
     }
 
     @PutMapping(value = "/update")
-    @CrossOrigin(origins = "http://174.138.8.53:80")
-//    @CrossOrigin(origins = "http://localhost:4200")
     public void updateServer(@RequestBody Promocode e) {
         promocodeService.update(e);
     }
 
     @PostMapping(value = "/new")
-    @CrossOrigin(origins = "http://174.138.8.53:80")
-//    @CrossOrigin(origins = "http://localhost:4200")
     public void newServer(@RequestBody Promocode p) {
         promocodeService.create(p);
     }
