@@ -77,13 +77,15 @@ public class UserController {
     }
 
     @DeleteMapping("/delete/{id}")
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://174.138.8.53:80")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
 
     @PutMapping("/updateRole")
-    @CrossOrigin(origins = "http://localhost:4200")
+//    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://174.138.8.53:80")
     public void deleteUser(@RequestBody UpdateRole r) {
         userService.updateRole(r.role(), r.id());
     }

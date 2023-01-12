@@ -18,8 +18,8 @@ public class OrderController {
     OrdersService ordersService;
 
     @PostMapping()
-//    @CrossOrigin(origins = "http://localhost:80")
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://174.138.8.53:80")
+//    @CrossOrigin(origins = "http://localhost:4200")
     public void newServer(@RequestBody List<Orders> orders) {
         ordersService.addNewOrders(orders);
     }
