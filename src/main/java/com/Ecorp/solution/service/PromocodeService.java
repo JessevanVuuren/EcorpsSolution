@@ -31,4 +31,15 @@ public class PromocodeService {
     public void create(Promocode p) {
         promocodeDAO.create(p);
     }
+
+    public double checkCode(String code) {
+        List<Promocode> codes = getAllPromocodes();
+        for(Promocode promo: codes) {
+            if (promo.getName().equals(code)) {
+                return promo.getAmountoff();
+            }
+        }
+
+        return 0;
+    }
 }

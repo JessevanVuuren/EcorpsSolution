@@ -31,6 +31,11 @@ public class PromoCodeController {
         return promocodeService.getAllPromocodes();
     }
 
+    @GetMapping(value = "/check/{code}")
+    public double checkCode(@PathVariable String code) {
+        return promocodeService.checkCode(code);
+    }
+
     @DeleteMapping(value = "/delete/{id}")
     public void deleteServer(@PathVariable Long id) {
         promocodeService.delete(id);
